@@ -159,6 +159,9 @@ export class RohlikAPI {
         !p.badge?.some((badge: any) => badge.slug === 'promoted')
       );
 
+      // Filter out products that are not in stock
+      products = products.filter((p: any) => p.inStock === true);
+
       // Limit results
       products = products.slice(0, limit);
 
