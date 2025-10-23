@@ -1,13 +1,15 @@
-# 🛒 Rohlik Shopping Agent & MCP Server
+# Rohlik Shopping Agent & MCP Server
 
 [![License: Apache 2.0](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.3-blue.svg)](https://www.typescriptlang.org/)
 [![Python](https://img.shields.io/badge/Python-3.11+-blue.svg)](https://www.python.org/)
 [![MCP](https://img.shields.io/badge/MCP-1.0-green.svg)](https://modelcontextprotocol.io/)
 
-> **Model Context Protocol server for autonomous grocery shopping with Rohlik Group services across 5 European markets. Features reliable shopping agents with comprehensive performance analysis and batch testing capabilities.**
+> **⚠️ PROTOTYPE DISCLAIMER: This is a prototype implementation and is not production-ready. Use at your own risk. The software may contain bugs, incomplete features, and should not be used for actual shopping transactions without thorough testing.**
 
-## 🚀 Quick Start
+Model Context Protocol server for grocery shopping automation with Rohlik Group services across 5 European markets. Includes shopping agents with performance analysis and batch testing capabilities.
+
+## Quick Start
 
 ```bash
 # 1. Setup (installs dependencies and configures environment)
@@ -17,68 +19,67 @@
 ./start.sh
 ```
 
-## 📋 Features
+## Features
 
-### 🛒 MCP Server
-- **Multi-Region Support**: Germany, Czech Republic, Austria, Hungary, Romania
-- **Product Search**: Advanced filtering with price sorting and organic options
-- **Cart Management**: Add, remove, and view cart items with session persistence
-- **Reliable Responses**: Structured JSON outputs for consistent LLM interaction
-- **Type-Safe**: Full TypeScript implementation with comprehensive error handling
-- **Session Persistence**: Cart state maintained across agent runs
+### MCP Server
+- Multi-region support for Germany, Czech Republic, Austria, Hungary, Romania
+- Product search with filtering, price sorting, and organic options
+- Cart management with add, remove, and view operations
+- Session persistence for cart state maintenance
+- TypeScript implementation with error handling
+- Structured JSON responses for LLM integration
 
-### 🤖 Shopping Agent
-- **Autonomous Shopping**: Fully autonomous budget-optimized shopping workflows
-- **Quality Focus**: Prioritizes shopping accuracy and reliability
-- **Batch Testing**: Configurable test iterations with comprehensive metrics
-- **Performance Analysis**: Success rate, execution time, and quality tracking
-- **CSV Export**: Structured CSV reports for analysis and reporting
-- **Interactive Interface**: Menu-driven launcher with multiple options
+### Shopping Agent
+- Automated shopping workflows with budget optimization
+- Batch testing with configurable iterations
+- Performance metrics collection and analysis
+- CSV export functionality for data analysis
+- Interactive menu-driven interface
 
-## 📊 Performance & Quality
+## Performance & Quality
 
-### Quality Assurance Features
+### Implementation Features
 
-- **Reliable Shopping**: Prioritizes accuracy over speed optimization
-- **Category Validation**: Ensures food-only product selection
-- **Error Handling**: Comprehensive error recovery and retry logic
-- **Session Management**: Persistent cart state across runs
-- **Data Validation**: Structured JSON responses with type checking
+- Product selection validation for food categories only
+- Error handling and retry logic
+- Session management with persistent cart state
+- Data validation with structured JSON responses
+- Type checking and validation
 
-### Performance Characteristics
+### Performance Metrics
 
 | Metric | Shopping Agent | Notes |
 |--------|----------------|-------|
-| **Accuracy** | High | Prioritizes correct product selection |
-| **Execution Time** | 30-60s | Varies by request complexity |
-| **Success Rate** | >95% | Reliable shopping completion |
-| **Cart Quality** | Excellent | Accurate product matching |
-| **Error Recovery** | Robust | Handles API failures gracefully |
+| Accuracy | Variable | Depends on product availability and search terms |
+| Execution Time | 30-60s | Varies by request complexity and network conditions |
+| Success Rate | Variable | Depends on API availability and product selection |
+| Cart Quality | Variable | Based on product matching accuracy |
+| Error Recovery | Implemented | Handles API failures with retry logic |
 
-## 🛠️ Installation
+## Installation
 
 ### Prerequisites
 
-- **Node.js 18+** (for MCP server)
-- **Python 3.11+** (for Shopping Agent)
-- **LM Studio** (for local LLM inference)
+- Node.js 24+ (for MCP server)
+- Python 3.11+ (for Shopping Agent)
+- LM Studio (for local LLM inference)
 
 ### LM Studio Setup
 
-**⚠️ Important**: The Shopping Agent requires LM Studio to be running with a compatible model.
+**Important**: The Shopping Agent requires LM Studio to be running with a compatible model.
 
 1. **Download and Install LM Studio**
    - Visit: https://lmstudio.ai/
    - Download for your platform (macOS, Windows, Linux)
 
 2. **Download a Compatible Model**
-   - Recommended: `qwen/qwen3-4b-2507` (4B parameters, good balance of speed/quality)
+   - Recommended: `qwen/qwen3-4b-2507` (4B parameters, balance of speed/quality)
    - In LM Studio: Go to "Discover" → Search for "qwen3-4b" → Download
 
 3. **Start the Local Server**
    - In LM Studio: Go to "Local Server" tab
    - Load your downloaded model
-   - **Set port to 1234** (default)
+   - Set port to 1234 (default)
    - Click "Start Server"
    - Verify it shows: `Server running on http://localhost:1234`
 
@@ -88,12 +89,12 @@
    # Should return JSON with your loaded model
    ```
 
-**📝 Note**: The Shopping Agent is pre-configured to use:
-- **Model**: `qwen/qwen3-4b-2507` 
-- **Endpoint**: `http://localhost:1234/v1`
-- **API Key**: `lm-studio` (default)
+**Note**: The Shopping Agent is pre-configured to use:
+- Model: `qwen/qwen3-4b-2507` 
+- Endpoint: `http://localhost:1234/v1`
+- API Key: `lm-studio` (default)
 
-No additional configuration needed if you follow the setup above!
+No additional configuration needed if you follow the setup above.
 
 ### Project Setup
 
@@ -105,17 +106,17 @@ No additional configuration needed if you follow the setup above!
 ./start.sh
 ```
 
-## 📖 Usage
+## Usage
 
 ### Interactive Launcher
 
 The `start.sh` script provides an interactive menu with the following options:
 
-1. **🛒 Run Single Shopping Agent** - Execute one shopping session
-2. **📊 Run Batch Budget Test** - Run 50 automated shopping sessions
-3. **📈 Generate CSV Report** - Export performance data to CSV
-4. **🧹 Clean Results Directory** - Clear all test results
-5. **❌ Exit** - Close the launcher
+1. Run Single Shopping Agent - Execute one shopping session
+2. Run Batch Budget Test - Run 50 automated shopping sessions
+3. Generate CSV Report - Export performance data to CSV
+4. Clean Results Directory - Clear all test results
+5. Exit - Close the launcher
 
 ### Single Shopping Session
 
@@ -126,9 +127,9 @@ The `start.sh` script provides an interactive menu with the following options:
 
 The agent will:
 - Connect to Rohlik.cz
-- Search for budget-friendly products
+- Search for products
 - Add items to cart
-- Generate detailed performance report
+- Generate performance report
 
 ### Batch Testing
 
@@ -140,8 +141,8 @@ The agent will:
 Runs 50 automated shopping sessions with:
 - Randomized product searches
 - Budget optimization
-- Comprehensive metrics collection
-- JSON export of all results
+- Metrics collection
+- JSON export of results
 
 ### CSV Report Generation
 
@@ -151,11 +152,11 @@ Runs 50 automated shopping sessions with:
 ```
 
 Generates three CSV files:
-- **Detailed Report**: All metrics per run
-- **Summary Report**: Aggregated statistics
-- **Budget Format**: Compatible with existing analysis tools
+- Detailed Report: All metrics per run
+- Summary Report: Aggregated statistics
+- Budget Format: Compatible with existing analysis tools
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 rohlik-mcp-server/
@@ -173,17 +174,17 @@ rohlik-mcp-server/
 └── README.md               # This file
 ```
 
-## 🔧 Configuration
+## Configuration
 
 ### MCP Server Configuration
 
 The MCP server supports multiple Rohlik regions:
 
-- **Germany**: rohlik.de
-- **Czech Republic**: rohlik.cz
-- **Austria**: rohlik.at
-- **Hungary**: rohlik.hu
-- **Romania**: rohlik.ro
+- Germany: rohlik.de
+- Czech Republic: rohlik.cz
+- Austria: rohlik.at
+- Hungary: rohlik.hu
+- Romania: rohlik.ro
 
 ### Agent Configuration
 
@@ -195,36 +196,36 @@ SCRIPT_NAME = "rohlik_agent.py"
 TOTAL_RUNS = 50  # Number of test runs
 ```
 
-## 📊 Data Analysis
+## Data Analysis
 
 ### CSV Reports
 
 The CSV generator creates three report types:
 
-1. **Detailed CSV**: Complete metrics for each run
+1. Detailed CSV: Complete metrics for each run
    - Execution time, token usage, cart contents
    - Tool call statistics, error rates
    - Item-level pricing and selection data
 
-2. **Summary CSV**: Aggregated statistics
+2. Summary CSV: Aggregated statistics
    - Average execution times and token usage
    - Success rates and error analysis
    - Total spending and item counts
 
-3. **Budget Format CSV**: Compatible with existing tools
+3. Budget Format CSV: Compatible with existing tools
    - Standardized column format
    - Easy import into spreadsheet applications
    - Historical data comparison
 
 ### Metrics Tracked
 
-- **Performance**: Execution time, cycle count, tool calls
-- **Token Usage**: Input, output, cache read/write tokens
-- **Shopping Quality**: Items selected, prices, cart totals
-- **Success Rates**: Completion rates, error handling
-- **Cost Analysis**: Budget adherence, price optimization
+- Performance: Execution time, cycle count, tool calls
+- Token Usage: Input, output, cache read/write tokens
+- Shopping Quality: Items selected, prices, cart totals
+- Success Rates: Completion rates, error handling
+- Cost Analysis: Budget adherence, price optimization
 
-## 🔧 Troubleshooting
+## Troubleshooting
 
 ### LM Studio Issues
 
@@ -261,7 +262,7 @@ curl http://localhost:1234/v1/models
 - Check that JSON files exist in `strands-agent/shopping_exports/`
 - Run: `./start.sh` → Option 1 (Single Agent) → then Option 3 (CSV Report)
 
-## 🤝 Contributing
+## Contributing
 
 1. Fork the repository
 2. Create a feature branch (`git checkout -b feature/amazing-feature`)
@@ -269,16 +270,12 @@ curl http://localhost:1234/v1/models
 4. Push to the branch (`git push origin feature/amazing-feature`)
 5. Open a Pull Request
 
-## 📄 License
+## License
 
 This project is licensed under the Apache License 2.0 - see the [LICENSE](LICENSE) file for details.
 
-## 🙏 Acknowledgments
+## Acknowledgments
 
-- [Rohlik Group](https://www.rohlik.cz/) for their comprehensive API
+- [Rohlik Group](https://www.rohlik.cz/) for their API
 - [Model Context Protocol](https://modelcontextprotocol.io/) for the integration framework
 - [LM Studio](https://lmstudio.ai/) for local LLM inference capabilities
-
----
-
-**Happy Shopping! 🛒✨**
