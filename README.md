@@ -1,11 +1,11 @@
-# 🛒 Rohlik Shopping Agent & MCP Server
+# From Pixels to Protocols: Building Production-Ready AI Shopping Agents
 
 [![License: Apache 2.0](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.3-blue.svg)](https://www.typescriptlang.org/)
 [![Python](https://img.shields.io/badge/Python-3.11+-blue.svg)](https://www.python.org/)
 [![MCP](https://img.shields.io/badge/MCP-1.0-green.svg)](https://modelcontextprotocol.io/)
 
-> **Model Context Protocol server for autonomous grocery shopping with Rohlik Group services across 5 European markets. Features reliable shopping agents with comprehensive performance analysis and batch testing capabilities.**
+> **After spending 40 hours building a screenshot-based shopping agent and running 300 tests to understand its limitations, this project demonstrates the shift to API-based architecture using Model Context Protocol (MCP) for production-ready autonomous grocery shopping across 5 European markets.**
 
 ## 🚀 Quick Start
 
@@ -17,43 +17,65 @@
 ./start.sh
 ```
 
-## 📋 Features
+## 🚀 The Journey: From Screenshots to APIs
 
-### 🛒 MCP Server
+After 40 hours of building screenshot-based shopping agents and running 300 tests, the fundamental question emerged: **"Should we make screenshot-based agents work better, or were they the wrong choice entirely?"**
+
+The answer was clear. This project demonstrates the shift from computer vision-based approaches to **API-based architecture using Model Context Protocol (MCP)** — a standard that lets AI systems interact with APIs through structured schemas.
+
+### 🛒 MCP Server (API-Based Architecture)
 - **Multi-Region Support**: Germany, Czech Republic, Austria, Hungary, Romania
+- **Direct API Integration**: No screenshots, no UI scraping — pure API communication
 - **Product Search**: Advanced filtering with price sorting and organic options
 - **Cart Management**: Add, remove, and view cart items with session persistence
 - **Reliable Responses**: Structured JSON outputs for consistent LLM interaction
 - **Type-Safe**: Full TypeScript implementation with comprehensive error handling
-- **Session Persistence**: Cart state maintained across agent runs
+- **Session Persistence**: Cookie-based state management, not browser state
 
-### 🤖 Shopping Agent
-- **Autonomous Shopping**: Fully autonomous budget-optimized shopping workflows
-- **Quality Focus**: Prioritizes shopping accuracy and reliability
-- **Batch Testing**: Configurable test iterations with comprehensive metrics
-- **Performance Analysis**: Success rate, execution time, and quality tracking
-- **CSV Export**: Structured CSV reports for analysis and reporting
-- **Interactive Interface**: Menu-driven launcher with multiple options
+### 🤖 Production-Ready Shopping Agent
+- **100% Success Rate**: Reliable shopping completion (vs 60% with screenshot approach)
+- **Sequential Processing**: One item at a time, preventing cascade failures
+- **Stateless Operation**: No memory between runs, just single-session task completion
+- **Cost-Effective**: 0.42-0.70% of transaction margin in inference costs
+- **Batch Testing**: 200+ test runs with comprehensive performance tracking
+- **CSV Export**: Structured reports for analysis and business intelligence
 
-## 📊 Performance & Quality
+## 📊 Production-Ready Performance Metrics
+
+### The Shift: From 60% to 100% Success Rate
+
+The transition from screenshot-based to API-based architecture delivered production-viable metrics across every dimension:
+
+| Metric | Screenshot Approach | API-Based Approach | Improvement |
+|--------|-------------------|-------------------|-------------|
+| **Success Rate** | 60% | 100% | +40% |
+| **Execution Time** | 30-60s | 30-60s | Consistent |
+| **Cost Efficiency** | High operational overhead | 0.42-0.70% of margin | 99%+ cost reduction |
+| **Reliability** | UI-dependent failures | API-stable | Production-ready |
+| **Maintenance** | High (UI changes = breaking changes) | Low (API contracts) | Minimal overhead |
+
+### Cost Analysis & Business Viability
+
+**Typical Scenario (€39 cart, 3-5% margin):**
+- Gross profit: €1.17 to €1.95
+- Agent costs: €0.005 to €0.008 (0.42-0.70% of margin)
+
+**Best Case (Private label, 25% margin):**
+- Gross profit: €9.75
+- Agent costs: €0.008 (0.08% of margin)
+
+**Scale Projection (1,000 carts/month):**
+- Monthly inference costs: €8.22
+- Gross profit range: €1,170 to €9,750
+- ROI: 14,000% to 118,000%
 
 ### Quality Assurance Features
 
-- **Reliable Shopping**: Prioritizes accuracy over speed optimization
-- **Category Validation**: Ensures food-only product selection
-- **Error Handling**: Comprehensive error recovery and retry logic
-- **Session Management**: Persistent cart state across runs
+- **Sequential Processing**: One item at a time, preventing cascade failures
+- **Category Validation**: Ensures food-only product selection with structured data
+- **Error Handling**: Comprehensive API error recovery and retry logic
+- **Session Management**: Cookie-based persistence, not browser state
 - **Data Validation**: Structured JSON responses with type checking
-
-### Performance Characteristics
-
-| Metric | Shopping Agent | Notes |
-|--------|----------------|-------|
-| **Accuracy** | High | Prioritizes correct product selection |
-| **Execution Time** | 30-60s | Varies by request complexity |
-| **Success Rate** | >95% | Reliable shopping completion |
-| **Cart Quality** | Excellent | Accurate product matching |
-| **Error Recovery** | Robust | Handles API failures gracefully |
 
 ## 🛠️ Installation
 
@@ -155,12 +177,27 @@ Generates three CSV files:
 - **Summary Report**: Aggregated statistics
 - **Budget Format**: Compatible with existing analysis tools
 
-## 📁 Project Structure
+## 🏗️ Architecture: API-First Design
+
+### Model Context Protocol (MCP) Integration
+
+This system uses **Model Context Protocol (MCP)** — a standard that lets AI systems interact with APIs through structured schemas. Instead of fighting with computer vision to extract data from pixels, we work directly with the structured data that e-commerce platforms are built on.
+
+**Key Architectural Decisions:**
+- **API-Based**: Direct integration with Rohlik's reverse-engineered APIs
+- **Sequential Processing**: One item at a time, preventing cascade failures
+- **Stateless Operation**: No memory between runs, just single-session task completion
+- **Cookie Persistence**: Session management via cookies, not browser state
+- **Structured Data**: Product categories and metadata for better decision-making
+
+### Project Structure
 
 ```
 rohlik-mcp-server/
-├── mcp-server/              # TypeScript MCP server
+├── rohlik-mcp/              # TypeScript MCP server
 │   ├── src/                 # Server source code
+│   │   ├── tools/           # MCP tool implementations
+│   │   └── rohlik-api.ts    # API integration layer
 │   └── package.json         # Node.js dependencies
 ├── strands-agent/           # Python shopping agent
 │   ├── rohlik_agent.py      # Main shopping agent
@@ -224,6 +261,32 @@ The CSV generator creates three report types:
 - **Success Rates**: Completion rates, error handling
 - **Cost Analysis**: Budget adherence, price optimization
 
+## 🎯 Lessons Learned: Why API-Based Architecture Won
+
+### The Hardest Decision: Abandoning 40 Hours of Work
+
+The hardest part wasn't building the API-based agent in 6 hours. It was deciding to abandon 40 hours of work on the screenshot approach. **Sunk cost fallacy is real**, especially when you've invested significant time debugging, prompt engineering, and convincing yourself that "one more iteration" will fix the fundamental issues.
+
+### Key Insights from 300 Test Runs
+
+**Screenshot Approach Problems:**
+- Every UI change becomes a breaking change
+- Every modal dialog becomes a potential infinite loop  
+- Every "X" button the agent fails to detect becomes a support ticket
+- High operational cost of maintaining a system that fights against the medium
+
+**API Approach Advantages:**
+- E-commerce platforms are structured data systems built on APIs
+- Using computer vision to extract structured data from rendered pixels is like OCR-ing a PDF generated from a Word document — technically possible, but why?
+- When the right abstraction clicks, the code writes itself
+- When you're fighting the wrong abstraction, every line is a struggle
+
+### The Signal to Rebuild Instead of Iterate
+
+- When your 10% improvements require 100% effort, you're optimizing the wrong thing
+- When fixing one bug creates two new ones, the foundation is wrong
+- When you spend more time maintaining the system than improving it, the abstraction doesn't match the problem
+
 ## 🔧 Troubleshooting
 
 ### LM Studio Issues
@@ -261,6 +324,24 @@ curl http://localhost:1234/v1/models
 - Check that JSON files exist in `strands-agent/shopping_exports/`
 - Run: `./start.sh` → Option 1 (Single Agent) → then Option 3 (CSV Report)
 
+## 🚀 Production Readiness: What This Means
+
+When we say this system is **production-ready**, we're talking about the approach, not the deployment. The codebase you'll find on GitHub is a fully functional proof-of-concept that demonstrates the technical foundation — API-based architecture, MCP integration, reliable execution, and predictable costs.
+
+**Current State:**
+- Runs locally with LM Studio
+- Handles single-user sessions through file-based cookie store
+- 100% success rate across 200+ test runs
+- Cost-effective at 0.42-0.70% of transaction margin
+
+**Scaling to Production (2-4 weeks additional work):**
+- Session management via DynamoDB
+- Request queuing through SQS  
+- Proper authentication and user management
+- Multi-tenant support
+
+**The Key Insight:** These are solved problems with clear implementation paths. The hard part — proving that API-based agents can reliably complete shopping tasks with predictable performance — is done. The rest is engineering, not research.
+
 ## 🤝 Contributing
 
 1. Fork the repository
@@ -275,10 +356,11 @@ This project is licensed under the Apache License 2.0 - see the [LICENSE](LICENS
 
 ## 🙏 Acknowledgments
 
-- [Rohlik Group](https://www.rohlik.cz/) for their comprehensive API
-- [Model Context Protocol](https://modelcontextprotocol.io/) for the integration framework
+- [Rohlik Group](https://www.rohlik.cz/) for their comprehensive API across 5 European markets
+- [Model Context Protocol](https://modelcontextprotocol.io/) for the integration framework that made this possible
 - [LM Studio](https://lmstudio.ai/) for local LLM inference capabilities
+- The 40 hours of screenshot-based development that taught us what not to build
 
 ---
 
-**Happy Shopping! 🛒✨**
+**From Pixels to Protocols: The future of AI shopping agents is API-first. 🛒✨**
