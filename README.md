@@ -2,7 +2,7 @@
 
 [![License: Apache 2.0](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.3-blue.svg)](https://www.typescriptlang.org/)
-[![Python](https://img.shields.io/badge/Python-3.10+-blue.svg)](https://www.python.org/)
+[![Python](https://img.shields.io/badge/Python-3.11+-blue.svg)](https://www.python.org/)
 [![MCP](https://img.shields.io/badge/MCP-1.0-green.svg)](https://modelcontextprotocol.io/)
 
 > **Model Context Protocol server for autonomous grocery shopping with Rohlik Group services across 5 European markets. Features reliable shopping agents with comprehensive performance analysis and batch testing capabilities.**
@@ -60,20 +60,48 @@
 ### Prerequisites
 
 - **Node.js 18+** (for MCP server)
-- **Python 3.10+** (for Shopping Agent)
+- **Python 3.11+** (for Shopping Agent)
 - **LM Studio** (for local LLM inference)
 
-### Setup
+### LM Studio Setup
+
+**⚠️ Important**: The Shopping Agent requires LM Studio to be running with a compatible model.
+
+1. **Download and Install LM Studio**
+   - Visit: https://lmstudio.ai/
+   - Download for your platform (macOS, Windows, Linux)
+
+2. **Download a Compatible Model**
+   - Recommended: `qwen/qwen3-4b-2507` (4B parameters, good balance of speed/quality)
+   - In LM Studio: Go to "Discover" → Search for "qwen3-4b" → Download
+
+3. **Start the Local Server**
+   - In LM Studio: Go to "Local Server" tab
+   - Load your downloaded model
+   - **Set port to 1234** (default)
+   - Click "Start Server"
+   - Verify it shows: `Server running on http://localhost:1234`
+
+4. **Verify Connection**
+   ```bash
+   curl http://localhost:1234/v1/models
+   # Should return JSON with your loaded model
+   ```
+
+**📝 Note**: The Shopping Agent is pre-configured to use:
+- **Model**: `qwen/qwen3-4b-2507` 
+- **Endpoint**: `http://localhost:1234/v1`
+- **API Key**: `lm-studio` (default)
+
+No additional configuration needed if you follow the setup above!
+
+### Project Setup
 
 ```bash
-# 1. Clone the repository
-git clone https://github.com/your-username/rohlik-mcp-server.git
-cd rohlik-mcp-server
-
-# 2. Run automated setup
+# 1. Run automated setup
 ./setup.sh
 
-# 3. Launch interactive menu
+# 2. Launch interactive menu
 ./start.sh
 ```
 
@@ -195,6 +223,43 @@ The CSV generator creates three report types:
 - **Shopping Quality**: Items selected, prices, cart totals
 - **Success Rates**: Completion rates, error handling
 - **Cost Analysis**: Budget adherence, price optimization
+
+## 🔧 Troubleshooting
+
+### LM Studio Issues
+
+**Agent fails with connection error:**
+```bash
+# Check if LM Studio server is running
+curl http://localhost:1234/v1/models
+
+# If connection refused:
+# 1. Open LM Studio
+# 2. Go to "Local Server" tab  
+# 3. Load a model and click "Start Server"
+# 4. Verify port is 1234
+```
+
+**"No model loaded" error:**
+- In LM Studio: Load a model in the "Local Server" tab before starting
+- Recommended models: qwen3-4b, llama-3.2-3b, or similar 2B-8B parameter models
+
+**Slow performance:**
+- Use smaller models (2B-4B parameters) for faster inference
+- Ensure LM Studio is using GPU acceleration if available
+- Close other applications to free up system resources
+
+### Shopping Agent Issues
+
+**"No products found":**
+- Check your region setting in `rohlik-mcp/.env`
+- Verify the MCP server is running: `cd rohlik-mcp && npm start`
+- Try different search terms or check if the service is available in your area
+
+**CSV generation fails:**
+- Ensure you have run at least one shopping session first
+- Check that JSON files exist in `strands-agent/shopping_exports/`
+- Run: `./start.sh` → Option 1 (Single Agent) → then Option 3 (CSV Report)
 
 ## 🤝 Contributing
 
