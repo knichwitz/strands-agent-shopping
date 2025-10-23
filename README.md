@@ -324,23 +324,36 @@ curl http://localhost:1234/v1/models
 - Check that JSON files exist in `strands-agent/shopping_exports/`
 - Run: `./start.sh` → Option 1 (Single Agent) → then Option 3 (CSV Report)
 
-## 🚀 Production Readiness: What This Means
+## ⚠️ Important Disclaimer
 
-When we say this system is **production-ready**, we're talking about the approach, not the deployment. The codebase you'll find on GitHub is a fully functional proof-of-concept that demonstrates the technical foundation — API-based architecture, MCP integration, reliable execution, and predictable costs.
+**This is NOT a production-ready system.** This project is a **proof-of-concept** that demonstrates the technical foundation and business viability of API-based shopping agents. It showcases that the approach works and is economically feasible, but requires significant additional development for production deployment.
 
-**Current State:**
+## 🚀 What This Proves: Technical Foundation & Business Viability
+
+When we say this system demonstrates **production-readiness**, we're talking about the approach and business case, not the deployment. The codebase you'll find on GitHub is a fully functional proof-of-concept that demonstrates:
+
+- **Technical Foundation**: API-based architecture, MCP integration, reliable execution
+- **Business Viability**: Predictable costs at 0.42-0.70% of transaction margin
+- **Scalability Path**: Clear implementation roadmap for production deployment
+
+**Current State (Proof-of-Concept):**
 - Runs locally with LM Studio
 - Handles single-user sessions through file-based cookie store
 - 100% success rate across 200+ test runs
 - Cost-effective at 0.42-0.70% of transaction margin
 
-**Scaling to Production (2-4 weeks additional work):**
+**What Production Would Require (2-4 weeks additional work):**
 - Session management via DynamoDB
 - Request queuing through SQS  
 - Proper authentication and user management
 - Multi-tenant support
+- Error monitoring and alerting
+- Rate limiting and abuse prevention
+- Compliance and security hardening
 
-**The Key Insight:** These are solved problems with clear implementation paths. The hard part — proving that API-based agents can reliably complete shopping tasks with predictable performance — is done. The rest is engineering, not research.
+**The Key Insight:** These are solved problems with clear implementation paths. The hard part — proving that API-based agents can reliably complete shopping tasks with predictable performance and viable economics — is done. The rest is engineering, not research.
+
+**For Business Decision Makers:** This demonstrates that AI shopping agents are technically feasible and economically viable. The question isn't whether this exact code runs at scale, but whether the approach is fundamentally sound enough to invest in productionizing. The answer, backed by 200 test runs and cost analysis, is yes.
 
 ## 🤝 Contributing
 
