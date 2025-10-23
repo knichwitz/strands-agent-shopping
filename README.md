@@ -324,9 +324,9 @@ curl http://localhost:1234/v1/models
 - Check that JSON files exist in `strands-agent/shopping_exports/`
 - Run: `./start.sh` → Option 1 (Single Agent) → then Option 3 (CSV Report)
 
-## ⚠️ Important Disclaimer
+## ⚠️ A Note on "Production-Ready"
 
-**This is NOT a production-ready system.** This project is a **proof-of-concept** that demonstrates the technical foundation and business viability of API-based shopping agents. It showcases that the approach works and is economically feasible, but requires significant additional development for production deployment.
+**This is a prototype and not production ready.** This project is a **proof-of-concept** that demonstrates the technical foundation and business viability of API-based shopping agents. It showcases that the approach works and is economically feasible, but requires significant additional development for production deployment.
 
 ## 🚀 What This Proves: Technical Foundation & Business Viability
 
